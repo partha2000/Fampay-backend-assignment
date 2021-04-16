@@ -4,5 +4,6 @@ from django.db import models
 class videoData(models.Model):
     title = models.CharField()
     description = models.TextField()
+    channel_name = models.CharField()
     pub_date_time = models.DateTimeField()
     thumbnailURL = models.URLField()
