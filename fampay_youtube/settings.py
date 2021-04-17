@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django_crontab',
     'youtube_api',
 ]
 
@@ -82,6 +82,8 @@ DATABASES = {
     }
 }
 
+## For automatic primary keys when not specified
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -121,6 +123,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CRONJOBS = [
-    ('*/5 * * * *', 'youtube_api.cron.my_scheduled_job')
-]

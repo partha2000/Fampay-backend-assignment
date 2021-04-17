@@ -7,3 +7,7 @@ class videoData(models.Model):
     channel_name = models.CharField(max_length= 20)
     pub_date_time = models.DateTimeField()
     thumbnailURL = models.URLField()
+
+class testModel(models.Model):
+    name = models.CharField(max_length= 10)
+    
