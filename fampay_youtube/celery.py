@@ -1,6 +1,7 @@
 import os
 
 from celery import Celery
+from celery.schedules import crontab
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fampay_youtube.settings')
@@ -12,6 +13,15 @@ app = Celery('fampay_youtube')
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
+
+app.conf.beat_schedule ={
+    'every-15-seconds_periodic_task':{
+        'task':'youtube_api.tasks.periodic_task',
+        'schedule': crontab(minute='*/1')
+        # 'schedule':15,
+
+    }
+}
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()

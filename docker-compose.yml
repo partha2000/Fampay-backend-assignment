@@ -19,7 +19,7 @@ services:
     celery:
         build: .
         container_name: celery_service
-        command: celery -A fampay_youtube worker -l INFO
+        command: celery -A fampay_youtube beat -l INFO
         volumes: 
             - .:/app/
         environment: 
