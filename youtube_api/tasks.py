@@ -39,7 +39,8 @@ def periodic_task():
     # print('deleted previous entries')
 
     for i in response['items']:
-        p = videoData(videoID = i['id']['videoId'],
+        p = videoData(
+                        videoID = i['id']['videoId'],
                         title=i['snippet']['title'],
                         description=i['snippet']['description'],
                         channel_name=i['snippet']['channelTitle'],
@@ -55,7 +56,7 @@ def periodic_task():
     print("Youtube data saved to database")
 
     for row in videoData.objects.all().reverse():
-        if videoData.objects.filter(videoID==row.videoID).count() > 1:
+        if videoData.objects.filter(videoID=row.videoID).count() > 1:
             row.delete()
     print("Removed duplicate entries")
     youtube_service.close()
