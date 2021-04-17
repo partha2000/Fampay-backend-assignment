@@ -16,10 +16,10 @@ services:
             - CELERY_BACKEND=redis://redis:6379/0
         depends_on: 
             - redis
-    celery:
+    celery-worker:
         build: .
-        container_name: celery_service
-        command: celery -A fampay_youtube beat -l INFO
+        container_name: celery_worker
+        command: celery -A fampay_youtube worker -l INFO
         volumes: 
             - .:/app/
         environment: 
@@ -30,7 +30,21 @@ services:
         depends_on: 
             - django
             - redis
-    
+    celery-beat:
+        build: .
+        container_name: celery_beat
+        command: celery -A fampay_youtube beat -l INFO
+        volumes: 
+            - .:/app/
+        environment: 
+            - DEBUG=1
+            - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1
+            - CELERY_BROKER=redis://redis:6379/0
+            - CELERY_BACKEND=redis://redis:6379/0
+        depends_on: 
+            - django
+            - celery-worker
+            - redis
     redis:
         image: "redis:alpine"
 
