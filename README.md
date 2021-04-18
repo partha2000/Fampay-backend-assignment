@@ -54,3 +54,12 @@ __Run these commands inside the root directory of the project__
 3. `source .venv/bin/activate`		-> Get inside the virtual environment
 4. `pip install --upgrade pip`		-> get upgraded to pip3
 5. `pip install -r requirements.txt`-> Thereafter install all the packages as per the reqirements.txt
+
+## API Endpoints
+- `localhost:8000/`
+  -  GET request to this endpoint returns the stored video data in a paginated response sorted in descending order of published datetime
+- `localhost:8000/searchVideo/`
+  - GET request with proper query parameters(ordering & search) will search the stored videos using their title and description along with option for ordering.
+  - Eg. `http://127.0.0.1:8000/searchVideo/?ordering=-pub_date_time&search=live` will fetch all video details having "live" in their title or description in descending order of published date and time.
+
+You can use the web browsable API of the server or [Postman](https://www.postman.com/) to test the API.
