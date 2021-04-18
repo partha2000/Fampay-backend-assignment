@@ -14,19 +14,18 @@ app = Celery('fampay_youtube')
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+
+# The background task to fetch the video data will be ran every
+# 30 minutes to compensate for the youtube API key quota.
+# Change the time period for the background task by modifying
+# the crontab parameters. 
+
 app.conf.beat_schedule ={
     'every-15-seconds_periodic_task':{
         'task':'youtube_api.tasks.periodic_task',
-        'schedule': crontab(minute='*/1')
-        # 'schedule':15,
-
+        'schedule': crontab(minute='*/30')
     }
 }
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
-
-
-@app.task(bind=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')

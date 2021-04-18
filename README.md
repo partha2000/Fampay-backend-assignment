@@ -54,6 +54,10 @@ __Run these commands inside the root directory of the project__
 3. `source .venv/bin/activate`		-> Get inside the virtual environment
 4. `pip install --upgrade pip`		-> get upgraded to pip3
 5. `pip install -r requirements.txt`-> Thereafter install all the packages as per the reqirements.txt
+   
+_Running migrations is not required as it has alredy been added to `docker-compose.yml`. In case there is any issue due to migrations 
+   not being applied you can always run `python mange.py makemigrations` followed by `python manage.py migrate` inside the 
+   virtual environment._
 
 ## API Endpoints
 - `localhost:8000/`
@@ -63,3 +67,8 @@ __Run these commands inside the root directory of the project__
   - Eg. `http://127.0.0.1:8000/searchVideo/?ordering=-pub_date_time&search=live` will fetch all video details having "live" in their title or description in descending order of published date and time.
 
 You can use the web browsable API of the server or [Postman](https://www.postman.com/) to test the API.
+
+## Possible issues
+In case of any issue run these commands:
+- `docker system prune` 
+  - If you get the error message `docker-compose INTERNAL ERROR: cannot create temporary directory`
