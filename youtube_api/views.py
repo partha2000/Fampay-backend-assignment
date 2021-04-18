@@ -11,23 +11,28 @@ from rest_framework import filters
 from .serializers import videoDataSerializer
 from .models import videoData
 
+## Simple GET API to fetch video data stored in the database in a reverse chronological order
 class videoDataView(mixins.ListModelMixin,
     generics.GenericAPIView,
     mixins.CreateModelMixin):
     pagination_class = api_settings.DEFAULT_PAGINATION_CLASS ## This will auto paginate the repsonse
 
     serializer_class = videoDataSerializer
-    queryset = videoData.objects.all().order_by('-pub_date_time')
+    queryset = videoData.objects.all().order_by('-pub_date_time')  ## Return videos in a reverse chronologial order
 
     def get(self, reqeust, *args, **kwargs):
         return self.list(reqeust, *args, **kwargs)
 
-
+## Search API to search the stored videos using their title and description.
 class videoDataSearchView(generics.ListAPIView):
+
+    # title and description have been added to match the search querry with both of them
     search_fields = [
         'title',
         'description'
     ]
+
+    # fields for ordering the response
     ordering_fields = [
         'pub_date_time',
         'title'] 

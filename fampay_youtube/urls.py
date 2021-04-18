@@ -19,6 +19,8 @@ from youtube_api.views import videoDataView,videoDataSearchView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    ## API endpoints
     path('',videoDataView.as_view(),name='video-data-view'),
     path('searchVideo/', videoDataSearchView.as_view(),name='video-data-search-view')
 ]

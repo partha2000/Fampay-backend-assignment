@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from .models import videoData
 
+
+## Serializer class for the video data response
 class videoDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = videoData
@@ -13,9 +15,3 @@ class videoDataSerializer(serializers.ModelSerializer):
             'pub_date_time',
             'thumbnailURL'
         )
-
-# class videoDataSearchSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = videoData
-#         fields = ('title',
-#                 'description')
