@@ -4,13 +4,13 @@ An API to fetch latest videos sorted in reverse chronological order of their pub
 ## Language / Frameworks involved
 * __Languages__
   - Python
-* __Frameworks/middleware__
+* __Tech Stack__
   - Django
-  - REST APIs
+  - DRF (REST APIs)
   - Celery
   - Redis
 * __Database__
-  - __Development__:SQLite
+  - __Development__: SQLite
 # Basic Requirements:
 
 - [X] Server should call the YouTube API continuously in background (async) with some interval (say 10 seconds) for fetching the latest videos for a predefined search query and should store the data of videos (specifically these fields - Video title, description, publishing datetime, thumbnails URLs and any other fields you require) in a database with proper indexes.
