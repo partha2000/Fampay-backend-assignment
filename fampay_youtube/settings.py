@@ -129,9 +129,10 @@ STATIC_URL = '/static/'
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER","redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER","redis://redis:6379/0")
 
+
+
+## Modify the PAGE_SIZE to modify pagination
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'
     ],

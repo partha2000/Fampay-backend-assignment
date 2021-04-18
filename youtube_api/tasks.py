@@ -21,7 +21,7 @@ def periodic_task():
 
     search_videos = youtube_service.search().list(
             part="snippet",
-            maxResults=15,
+            maxResults=50,
             order="date",
             publishedAfter="2021-04-10T00:00:00Z",
             type="video",

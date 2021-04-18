@@ -13,3 +13,9 @@ class videoDataSerializer(serializers.ModelSerializer):
             'pub_date_time',
             'thumbnailURL'
         )
+
+# class videoDataSearchSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = videoData
+#         fields = ('title',
+#                 'description')
