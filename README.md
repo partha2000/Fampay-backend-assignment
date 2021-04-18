@@ -64,9 +64,13 @@ _Running migrations is not required as it has alredy been added to `docker-compo
   -  GET request to this endpoint returns the stored video data in a paginated response sorted in descending order of published datetime
 - `localhost:8000/searchVideo/`
   - GET request with proper query parameters(ordering & search) will search the stored videos using their title and description along with option for ordering.
-  - Eg. `http://127.0.0.1:8000/searchVideo/?ordering=-pub_date_time&search=live` will fetch all video details having "live" in their title or description in descending order of published date and time.
+  - Eg. `http://127.0.0.1:8000/searchVideo/?ordering=-pub_date_time&search=live` will fetch all video details having "live" in their title or description in        descending order of published date and time.
 
-You can use the web browsable API of the server or [Postman](https://www.postman.com/) to test the API.
+**You can use the web browsable API of the server or [Postman](https://www.postman.com/) to test the API.**
+![drf1](https://user-images.githubusercontent.com/39731590/115150643-eef49400-a086-11eb-80ad-43f4d3d73b11.png)
+![image](https://user-images.githubusercontent.com/39731590/115150719-40048800-a087-11eb-8323-76c202ddaa98.png)
+
+
 
 ## Possible issues
 In case of any issue run these commands:
