@@ -24,6 +24,7 @@ def periodic_task():
     try:
         response = search_videos.execute()  
     except:
+        response = None
         print("Service unavailable at the moment or the API quota has been exhausted")
 
     if response != None:
@@ -38,8 +39,9 @@ def periodic_task():
             p.save()
         print("Youtube data saved to database")
 
-    for row in videoData.objects.all().reverse():
-        if videoData.objects.filter(videoID=row.videoID).count() > 1:
-            row.delete()
-    print("Removed duplicate entries")
+        for row in videoData.objects.all().reverse():
+            if videoData.objects.filter(videoID=row.videoID).count() > 1:
+                row.delete()
+        print("Removed duplicate entries")
+        
     youtube_service.close()

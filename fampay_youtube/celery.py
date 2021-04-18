@@ -21,7 +21,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 # the crontab parameters. 
 
 app.conf.beat_schedule ={
-    'every-15-seconds_periodic_task':{
+    'periodic youtube data fetch':{
         'task':'youtube_api.tasks.periodic_task',
         'schedule': crontab(minute='*/30')
     }
