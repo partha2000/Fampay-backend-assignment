@@ -28,6 +28,11 @@ class videoDataSearchView(generics.ListAPIView):
         'title',
         'description'
     ]
-    filter_backends = (filters.SearchFilter,)
+    ordering_fields = [
+        'pub_date_time',
+        'title'] 
+    filter_backends = (
+        filters.SearchFilter,
+        filters.OrderingFilter)
     queryset = videoData.objects.all().order_by('-pub_date_time')
     serializer_class = videoDataSerializer
