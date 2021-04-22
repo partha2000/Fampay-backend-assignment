@@ -3,14 +3,16 @@ from googleapiclient.discovery import build
 import json
 from .models import videoData
 from django.utils import dateparse
+from fampay_youtube.settings import API_KEY 
 
 ## Background task to periodically fetch youtube video data
 @shared_task
 def periodic_task():
     print("Youtube data is being fetched")
 
-    ## Keep the API key secret in production 
-    api_key = 'AIzaSyBR19SQAg3n1kKJzI6Gv37PYFmrDoMPR-w'
+    ## Keep the API key secret in production. 
+    ## Youtube API Key has been stored in settings.py
+    api_key = API_KEY
     youtube_service = build('youtube', 'v3',developerKey=api_key)
 
     search_videos = youtube_service.search().list(

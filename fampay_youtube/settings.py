@@ -23,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '03qdgyb^l@46jam_m5-cok3#6=1p4%-$v5)o@24sqyuux!npk7'
 
+# Youtube API Key (Replace with your own)
+API_KEY = 'AIzaSyBR19SQAg3n1kKJzI6Gv37PYFmrDoMPR-w'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
